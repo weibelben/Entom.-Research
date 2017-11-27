@@ -32,8 +32,8 @@ Updated 11/22/2017
 [alice@build]$ ls python 
 bin  include  lib  share
 ```
- 9. Ensure you have a python executable ```ls python/bin```
- The output should look similar to the following:
+ 9. Ensure you have a python executable ```ls python/bin```,
+ the output should look similar to the following:
 ```
 2to3              idle3    pydoc3     python3.4-config   pyenv
 2to3-3.4          idle3.4  pydoc3.4   python3.4m         pyenv-3.4
@@ -42,3 +42,6 @@ f2py3.4           pip3     python3.4  python3-config
 ```
 
 ##### Install pip
+Set your PATH variable to include your Python installation: 
+```export PATH=$(pwd)/python/bin:$PATH ```
+
