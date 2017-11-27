@@ -39,6 +39,12 @@ bin  include  lib  share
 ```
 
 ##### Install pip
-Set your PATH variable to include your Python installation: 
+ 10. Set your PATH variable to include your Python installation: 
 ```export PATH=$(pwd)/python/bin:$PATH ```
+ 11. Transfer the latest verion of pip by executing the following in your python/bin directory:
+ ```
+ wget https://bootstrap.pypa.io/get-pip.py
+ ``` 
+ 12. Install pip ```python get-pip.py```
+ 13. For each module needed by your code, run: ```pip install module_name``` in the python/bin directory.
 
