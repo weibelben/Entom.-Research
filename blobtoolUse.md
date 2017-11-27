@@ -35,10 +35,7 @@ bin  include  lib  share
  9. Ensure you have a python executable ```ls python/bin```,
  the output should look similar to the following:
 ```
-2to3              idle3    pydoc3     python3.4-config   pyenv
-2to3-3.4          idle3.4  pydoc3.4   python3.4m         pyenv-3.4
-easy_install-3.4  pip3.4   python3    python3.4m-config  
-f2py3.4           pip3     python3.4  python3-config
+2to3 idle  pydoc  python  python2  python2.7  python2.7-config  python2-config  python-config  smtpd.py
 ```
 
 ##### Install pip
