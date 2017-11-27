@@ -58,3 +58,4 @@ directory should look as follows:
 2to3          easy_install-2.7  idle  pip2    pydoc   python2    python2.7-config  python-config  wheel
 easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config    smtpd.py
 ```
+along with any additional modules that were installed in step (13) above. 
