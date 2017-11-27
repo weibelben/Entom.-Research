@@ -59,3 +59,9 @@ directory should look as follows:
 easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config    smtpd.py
 ```
 along with any additional modules that were installed in step (13) above. 
+--------------------------------------------------------------------------------------------------------
+##### Create a tarball of the installation 
+ 14. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
+ 15. Exit the Interactive job and return to the submit server: ```exit```
+ --------------------------------------------------------------------------------------------------------
+ 
