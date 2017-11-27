@@ -6,7 +6,7 @@ REQUIREMENTS:
  - Python 2.7
  - UNIX
  - pip
-
+--------------------------------------------------------------------------------------------------------
 ##### Installing Python on Condor
  1. First create a directory in which you will install Python 2.7. ```mkdir python```
  2. Transfer the latest version of Python 2.7 to your current working directory.
@@ -24,7 +24,7 @@ Updated 11/22/2017
  make
  make install
  ```
- 
+--------------------------------------------------------------------------------------------------------
 ##### Ensure Proper Installation
  7. Move up a directory ```cd ..``` 
  8. Check contents of python directory, should look accordingly
@@ -37,7 +37,7 @@ bin  include  lib  share
 ```
 2to3 idle  pydoc  python  python2  python2.7  python2.7-config  python2-config  python-config  smtpd.py
 ```
-
+--------------------------------------------------------------------------------------------------------
 ##### Install pip
  10. Set your PATH variable to include your Python installation: 
 ```export PATH=$(pwd)/python/bin:$PATH ```
@@ -47,4 +47,14 @@ bin  include  lib  share
  ``` 
  12. Install pip ```python get-pip.py```
  13. For each module needed by your code, run: ```pip install module_name``` in the python/bin directory.
-
+ 
+ ```
+ Zach, I'm unsure what modules we will need
+ ```
+--------------------------------------------------------------------------------------------------------
+##### python/bin Directory
+directory should look as follows:
+```
+2to3          easy_install-2.7  idle  pip2    pydoc   python2    python2.7-config  python-config  wheel
+easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config    smtpd.py
+```
