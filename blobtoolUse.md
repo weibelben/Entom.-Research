@@ -65,4 +65,21 @@ easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config 
  14. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
  15. Exit the Interactive job and return to the submit server: ```exit```
  --------------------------------------------------------------------------------------------------------
- 
+##### Sample script:
+We now have a python.tar.gz file that contains our entire Python installation. In order to use this installation in our HTCondor jobs, we will need to write a script that unpacks our Python installation and then runs our Python code. We will use this script as as the executable of our HTCondor submit file.
+
+A sample script appears below. After the first line, the lines starting with hash marks are comments . You should replace "myscript.py" with the name of the script you would like to run.
+```
+#!/bin/bash
+
+# untar your Python installation
+tar -xzf python.tar.gz
+# make sure the script will use your Python installation, 
+# and the working directory as it's home location
+export PATH=$(pwd)/python/bin:$PATH
+mkdir home
+export HOME=$(pwd)/home
+# run your script
+python my_script.py
+```
+Finally, give your script executable permissions by running: ```chmod +x run_python.sh```
