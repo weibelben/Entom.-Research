@@ -72,7 +72,7 @@ python  Python-2.7.14  Python-2.7.14.tgz
  blobtools  python  Python-2.7.14  Python-2.7.14.tgz
  ``` 
  17. Enter the blobtools directory ```cd blobtools```
- 18. Install blobtools ```./install```
+ 18. Install blobtools ```./install``` #FAILS
 --------------------------------------------------------------------------------------------------------
 ##### Create a tarball of the python installation 
  19. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
