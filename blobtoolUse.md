@@ -83,23 +83,23 @@ blobtools  python  Python-2.7.14  Python-2.7.14.tgz
  18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
  19. Enter the new directory ```cd samtools-1.5```
  20. Reset the path ```export PATH=$(pwd)/../samtools:$PATH``` 
- 20. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
+ 21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
 Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
- 21. Make and install samtools.
+ 22. Make and install samtools.
    ```
    make
    make install
    ```
    ERROR OCCURS ON SECOND STEP ABOVE ^
 --------------------------------------------------------------------------------------------------------
- 22. Move up a directory ```cd ..```
- 23. Reset your path to the correct location ```export PATH=$(pwd):$PATH```
- 24. Install blobtools ```./install``` 
+ 23. Move up a directory ```cd ..```
+ 24. Reset your path to the correct location ```export PATH=$(pwd):$PATH```
+ 25. Install blobtools ```./install``` 
 --------------------------------------------------------------------------------------------------------
 
 ##### Create a tarball of the python installation 
- 25. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
- 26. Exit the Interactive job and return to the submit server: ```exit```
+ 26. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
+ 27. Exit the Interactive job and return to the submit server: ```exit```
  --------------------------------------------------------------------------------------------------------
 ##### Sample script:
 We now have a python.tar.gz file that contains our entire Python installation. In order to use this installation in our HTCondor jobs, we will need to write a script that unpacks our Python installation and then runs our Python code. We will use this script as as the executable of our HTCondor submit file.
@@ -120,7 +120,7 @@ python my_script.py
 ```
 Finally, give your script executable permissions by running: ```chmod +x run_python.sh```
 
-
+-----------------------------------------------------------------------------------------------------------------------
 
 ### ERROR:
 ```
