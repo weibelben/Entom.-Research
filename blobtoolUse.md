@@ -68,10 +68,10 @@ easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config 
 python  Python-2.7.14  Python-2.7.14.tgz
 ```
 At this point we have installed all of the required dependencies for bloobtools, we just need to put them in the right place.
- 15. Clone blobtools to your directory ```git clone https://github.com/DRL/blobtools.git```
- 16. ```ls``` should now result in:
+ 15. Clone blobtools to your directory ```git clone https://github.com/DRL/blobtools.git```  
+ 16. ```ls``` should now result in: 
 ```
-blobtools  python  Python-2.7.14  Python-2.7.14.tgz
+blobtools  python  Python-2.7.14  Python-2.7.14.tgz 
 ``` 
 
 --------------------------------------------------------------------------------------------------------
