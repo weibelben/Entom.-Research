@@ -87,6 +87,7 @@ blobtools  python  Python-2.7.14  Python-2.7.14.tgz
  21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
  
 Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
+
  22. Make and install samtools.
    ```
    make
