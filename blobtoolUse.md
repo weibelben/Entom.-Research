@@ -75,23 +75,25 @@ blobtools  python  Python-2.7.14  Python-2.7.14.tgz
 ``` 
 
 --------------------------------------------------------------------------------------------------------
-   ###### Install samtools-1.5
- 17. Import the tar file from Samtools to your python bin.
+   ###### Install samtools-1.5 in blobtools
+ 17. Import the tar file from Samtools to your blobtools directory.
    ```
    wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
    ```
  18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
  19. Enter the new directory ```cd samtools-1.5```
- 21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../../../blobtools/samtools```
+ 20. Reset the path ```export PATH=$(pwd)/../samtools:$PATH``` 
+ 20. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
 Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
  21. Make and install samtools.
    ```
    make
    make install
    ```
+   ERROR OCCURS ON SECOND STEP ABOVE ^
 --------------------------------------------------------------------------------------------------------
- 22. Reset your path to the correct bin ```export PATH=$(pwd)/python/bin:$PATH``` 
- 23. Enter the blobtools directory ```cd blobtools```
+ 22. Move up a directory ```cd ..```
+ 23. Reset your path to the correct location ```export PATH=$(pwd):$PATH```
  24. Install blobtools ```./install``` 
 --------------------------------------------------------------------------------------------------------
 
@@ -117,3 +119,52 @@ export HOME=$(pwd)/home
 python my_script.py
 ```
 Finally, give your script executable permissions by running: ```chmod +x run_python.sh```
+
+
+
+### ERROR:
+```
+[bweibel@submit-3 samtools-1.5]$ make install
+mkdir -p -m 755 /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/bin /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/bin /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/share/man/man1
+install -p samtools /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/bin
+[+] Checking dependencies...
+    [+] [wget] /usr/bin/wget
+    [+] [tar] /bin/tar
+    [+] [pip] pip
+    [+] [python2.7] /home/bweibel/python/bin/python
+[+] Installing python dependencies...
+/home/bweibel/python/bin/python: can't open file 'setup.py': [Errno 2] No such file or directory
+FAIL.
+[X] - Python dependencies could not be installed. Make sure you are using Python 2.7 and have a functional installation of pip.
+install -p misc/ace2sam misc/maq2sam-long misc/maq2sam-short misc/md5fa misc/md5sum-lite misc/wgsim /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/bin
+[+] Checking dependencies...
+    [+] [wget] /usr/bin/wget
+    [+] [tar] /bin/tar
+    [+] [pip] pip
+    [+] [python2.7] /home/bweibel/python/bin/python
+[+] Installing python dependencies...
+/home/bweibel/python/bin/python: can't open file 'setup.py': [Errno 2] No such file or directory
+FAIL.
+[X] - Python dependencies could not be installed. Make sure you are using Python 2.7 and have a functional installation of pip.
+install -p misc/blast2sam.pl misc/bowtie2sam.pl misc/export2sam.pl misc/interpolate_sam.pl misc/novo2sam.pl misc/plot-bamstats misc/psl2sam.pl misc/sam2vcf.pl misc/samtools.pl misc/seq_cache_populate.pl misc/soap2sam.pl misc/varfilter.py misc/wgsim_eval.pl misc/zoom2sam.pl /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/bin
+[+] Checking dependencies...
+    [+] [wget] /usr/bin/wget
+    [+] [tar] /bin/tar
+    [+] [pip] pip
+    [+] [python2.7] /home/bweibel/python/bin/python
+[+] Installing python dependencies...
+/home/bweibel/python/bin/python: can't open file 'setup.py': [Errno 2] No such file or directory
+FAIL.
+[X] - Python dependencies could not be installed. Make sure you are using Python 2.7 and have a functional installation of pip.
+install -p -m 644 samtools.1 misc/wgsim.1 /home/bweibel/python/bin/samtools-1.5/../../../blobtools/samtools/share/man/man1
+[+] Checking dependencies...
+    [+] [wget] /usr/bin/wget
+    [+] [tar] /bin/tar
+    [+] [pip] pip
+    [+] [python2.7] /home/bweibel/python/bin/python
+[+] Installing python dependencies...
+/home/bweibel/python/bin/python: can't open file 'setup.py': [Errno 2] No such file or directory
+FAIL.
+[X] - Python dependencies could not be installed. Make sure you are using Python 2.7 and have a functional installation of pip.
+
+```
