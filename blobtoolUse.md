@@ -75,16 +75,16 @@ blobtools  python  Python-2.7.14  Python-2.7.14.tgz
 ``` 
 
 --------------------------------------------------------------------------------------------------------
-   ##### Install samtools-1.5
-    17. Import the tar file from Samtools to your python bin.
+   ###### Install samtools-1.5
+ 17. Import the tar file from Samtools to your python bin.
    ```
    wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
    ```
-    18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
-    19. Enter the new directory ```cd samtools-1.5```
-    21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../../../blobtools/samtools```
-   Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
-    21. Make and install samtools.
+ 18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
+ 19. Enter the new directory ```cd samtools-1.5```
+ 21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../../../blobtools/samtools```
+Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
+ 21. Make and install samtools.
    ```
    make
    make install
