@@ -61,9 +61,22 @@ easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config 
  along with any additional modules that were installed in step (13) above. 
 
 --------------------------------------------------------------------------------------------------------
-##### Create a tarball of the installation 
- 14. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
- 15. Exit the Interactive job and return to the submit server: ```exit```
+##### Install blobtools
+ 14. Return to your working directory, outside of python. ```ls``` should result in the following:
+ ```
+python  Python-2.7.14  Python-2.7.14.tgz
+ ```
+ 15. Clone blobtools to your directory ```git clone https://github.com/DRL/blobtools.git```
+ 16. ```ls``` should now result in:
+ ```
+ blobtools  python  Python-2.7.14  Python-2.7.14.tgz
+ ``` 
+ 17. Enter the blobtools directory ```cd blobtools```
+ 18. Install blobtools ```./install```
+--------------------------------------------------------------------------------------------------------
+##### Create a tarball of the python installation 
+ 19. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
+ 20. Exit the Interactive job and return to the submit server: ```exit```
  --------------------------------------------------------------------------------------------------------
 ##### Sample script:
 We now have a python.tar.gz file that contains our entire Python installation. In order to use this installation in our HTCondor jobs, we will need to write a script that unpacks our Python installation and then runs our Python code. We will use this script as as the executable of our HTCondor submit file.
