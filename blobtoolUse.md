@@ -46,7 +46,7 @@ bin  include  lib  share
  wget https://bootstrap.pypa.io/get-pip.py
  ``` 
  12. Install pip ```python get-pip.py```
- 13. For each module needed by your code, run: ```pip install module_name``` in the python/bin directory.
+ 13. For each module needed by your code, run: ```./pip install module_name``` in the python/bin directory.
  
  ```
  Zach, I'm unsure what modules we will need
@@ -59,24 +59,45 @@ directory should look as follows:
 easy_install  get-pip.py        pip   pip2.7  python  python2.7  python2-config    smtpd.py
 ```
  along with any additional modules that were installed in step (13) above. 
-
+ 
 --------------------------------------------------------------------------------------------------------
+
 ##### Install blobtools
  14. Return to your working directory, outside of python. ```ls``` should result in the following:
- ```
+```
 python  Python-2.7.14  Python-2.7.14.tgz
- ```
+```
+At this point we have installed all of the required dependencies for bloobtools, we just need to put them in the right place.
  15. Clone blobtools to your directory ```git clone https://github.com/DRL/blobtools.git```
  16. ```ls``` should now result in:
- ```
- blobtools  python  Python-2.7.14  Python-2.7.14.tgz
- ``` 
- 17. Enter the blobtools directory ```cd blobtools```
- 18. Install blobtools ```./install``` #FAILS
+```
+blobtools  python  Python-2.7.14  Python-2.7.14.tgz
+``` 
+
 --------------------------------------------------------------------------------------------------------
+   ##### Install samtools-1.5
+    17. Import the tar file from Samtools to your python bin.
+   ```
+   wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
+   ```
+    18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
+    19. Enter the new directory ```cd samtools-1.5```
+    21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../../../blobtools/samtools```
+   Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
+    21. Make and install samtools.
+   ```
+   make
+   make install
+   ```
+--------------------------------------------------------------------------------------------------------
+ 22. Reset your path to the correct bin ```export PATH=$(pwd)/python/bin:$PATH``` 
+ 23. Enter the blobtools directory ```cd blobtools```
+ 24. Install blobtools ```./install``` 
+--------------------------------------------------------------------------------------------------------
+
 ##### Create a tarball of the python installation 
- 19. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
- 20. Exit the Interactive job and return to the submit server: ```exit```
+ 25. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
+ 26. Exit the Interactive job and return to the submit server: ```exit```
  --------------------------------------------------------------------------------------------------------
 ##### Sample script:
 We now have a python.tar.gz file that contains our entire Python installation. In order to use this installation in our HTCondor jobs, we will need to write a script that unpacks our Python installation and then runs our Python code. We will use this script as as the executable of our HTCondor submit file.
