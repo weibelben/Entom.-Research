@@ -111,16 +111,17 @@ wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar
 Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
 
  22. Make and install samtools.
-   ```
-   make
-   make install
-   ```
+```
+make
+make install
+```
+
 --------------------------------------------------------------------------------------------------------
  23. Move up a directory ```cd ..```
- 24. Reset your path to the correct location ```export PATH=$(pwd)/../python/bin:$PATH```
+ 24. Reset your path to the correct location ```export PATH=$(pwd):$PATH```
  25. Install blobtools ```./install``` 
  
- ERROR OCCURS ON SECOND STEP ABOVE ^
+ ERROR OCCURS ON THE STEP ABOVE ^
 --------------------------------------------------------------------------------------------------------
 
 ##### Create a tarball of the python installation 
