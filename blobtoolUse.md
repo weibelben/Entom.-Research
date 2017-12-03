@@ -42,16 +42,15 @@ bin  include  lib  share
 ##### Install pip
  10. Set your PATH variable to include your Python installation: 
 ```export PATH=$(pwd)/python/bin:$PATH ```
- 11. Transfer the latest verion of pip by executing the following in your python/bin directory:
+ 11. Enter python/bin directory ```cd python/bin```
+ 12. Transfer the latest verion of pip by executing the following in your python/bin directory:
  ```
  wget https://bootstrap.pypa.io/get-pip.py
  ``` 
- 12. Install pip ```python get-pip.py```
+ 13. Install pip ```python get-pip.py```
 --------------------------------------------------------------------------------------------------------
 ##### Install setup tools
- 13. From the python/bin directory, set your PATH variable to include your Python installation: 
-```export PATH=$(pwd):$PATH ```
- 14. Trnsfer the tar file:
+ 14. Transfer the tar file:
  ```
  wget https://pypi.python.org/packages/34/da/2a7bb4f6159fefb67a78591cbb2b0bf4e58fa84260a095969600bb53f4e2/bootstrap-py-0.6.0.tar.gz
  ```
@@ -61,7 +60,7 @@ bin  include  lib  share
  18. Copy setup.py from bootstrap-py-0.6.0 to python's bin:
 ```
 cd ..
-cp bootstrap-py-0.6.0/python.py .
+cp bootstrap-py-0.6.0/setup.py .
 ```
 
 --------------------------------------------------------------------------------------------------------
@@ -103,7 +102,6 @@ cd blobtools
 wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
 ```
  18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
- 19. Make a samtools directory ```mkdir samtools```
  19. Enter the install directory ```cd samtools-1.5```
  20. Reset the path ```export PATH=$(pwd)/../samtools:$PATH``` 
  21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
@@ -159,17 +157,12 @@ Finally, give your script executable permissions by running: ```chmod +x run_pyt
     [+] [python2.7] /home/bweibel/python/bin/python
 [+] Installing python dependencies...
 running install
-Requirement already satisfied: docopt==0.6.2 in /home/bweibel/python/lib/python2.7/site-packages
-Requirement already satisfied: matplotlib==2.0.2 in /home/bweibel/python/lib/python2.7/site-packages
-Requirement already satisfied: cycler>=0.10 in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: numpy>=1.7.1 in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=1.5.6 in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: subprocess32 in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: functools32 in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: python-dateutil in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: pytz in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: six>=1.10 in /home/bweibel/python/lib/python2.7/site-packages (from matplotlib==2.0.2)
-Requirement already satisfied: ujson==1.35 in /home/bweibel/python/lib/python2.7/site-packages
+
+      .
+      .
+      .
+      
+Successfully installed ujson-1.35
 [+] Python dependencies installed.
 [+] Creating BlobTools executable...done.
 [+] Unpacking samtools-1.5...done.
