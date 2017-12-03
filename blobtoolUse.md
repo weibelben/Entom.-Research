@@ -133,7 +133,7 @@ We now have a python.tar.gz file that contains our entire Python installation. I
 
 A sample script appears below. After the first line, the lines starting with hash marks are comments . You should replace "myscript.py" with the name of the script you would like to run.
 ```
-#!/bin/bash
+#!/bin/bash  
 
 # untar your Python installation
 tar -xzf python.tar.gz
