@@ -18,9 +18,11 @@ Updated 11/22/2017
 
  3. Untar the source code that was transfered. ```tar -xzf Python-2.7.14.tgz```
  4. Change directory to the new Python file ```cd Python-2.7.14```
- 5. Compile the file to the python install file you created ``./configure --prefix=$(pwd)/../python``
- 6. Make and install Python 2.7.14
+ 5. Configure the file to the python install file you created ``./configure --prefix=$(pwd)/../python``
+ 6. Enable optimizations, set path, make and install Python 2.7.14
  ```
+ export PATH=$(pwd)/../python/bin:$PATH
+ ./configure --enable-optimizations
  make
  make install
  ```
