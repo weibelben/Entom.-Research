@@ -82,42 +82,42 @@ idle                       python2.7-config  rst2latex.py    rst2s5.py          
 --------------------------------------------------------------------------------------------------------
 
 ##### Install blobtools
- 14. Return to your working directory, outside of python. ```ls``` should result in the following:
+ 19. Return to your working directory, outside of python. ```ls``` should result in the following:
 ```
 python  Python-2.7.14  Python-2.7.14.tgz
 ```
 At this point we have installed all of the required dependencies for bloobtools, we just need to put them in the right place.
  
- 15. Clone blobtools to your directory ```git clone https://github.com/DRL/blobtools.git```  
- 16. ```ls``` should now result in: 
+ 20. Clone blobtools to your directory ```git clone https://github.com/DRL/blobtools.git```  
+ 21. ```ls``` should now result in: 
 ```
 blobtools  python  Python-2.7.14  Python-2.7.14.tgz 
 ``` 
 
 --------------------------------------------------------------------------------------------------------
    ###### Install samtools-1.5 in blobtools
- 17. Import the tar file from Samtools to your blobtools directory.
+ 22. Import the tar file from Samtools to your blobtools directory.
 ```
 cd blobtools
 wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
 ```
- 18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
- 19. Enter the install directory ```cd samtools-1.5```
- 20. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
+ 23. Untar it ```tar -xvf samtools-1.5.tar.bz2```
+ 24. Enter the install directory ```cd samtools-1.5```
+ 25. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
  
 Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
 
- 21. Make and install samtools.
+ 26. Make and install samtools.
 ```
 make
 make install
 ```
 
 --------------------------------------------------------------------------------------------------------
- 22. Move up a directory ```cd ..```
- 23. Enter the install executable ```vim install```
- 24. Scroll down to line 127.
- 25. Comment the lines that download and install samtools, the code should follow: 
+ 27. Move up a directory ```cd ..```
+ 28. Enter the install executable ```vim install```
+ 29. Scroll down to line 127.
+ 30. Comment the lines that download and install samtools (press i to edit), the code should follow: 
 ```
 # install samtools
 samtools_tar=$DIR/samtools-1.5.tar.bz2
@@ -126,13 +126,13 @@ samtools_tar=$DIR/samtools-1.5.tar.bz2
 #fi
 #install_samtools
 ```
- 26. Write and quit to return to your blobtools directory ```Esc + wq + Enter```
- 25. Install blobtools ```./install``` 
+ 31. Write and quit to return to your blobtools directory ```Esc + wq + Enter```
+ 32. Install blobtools ```./install``` 
 --------------------------------------------------------------------------------------------------------
 
 ##### Create a tarball of the python installation 
- 26. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
- 27. Exit the Interactive job and return to the submit server: ```exit```
+ 33. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
+ 34. Exit the Interactive job and return to the submit server: ```exit```
  --------------------------------------------------------------------------------------------------------
 ##### Sample script:
 We now have a python.tar.gz file that contains our entire Python installation. In order to use this installation in our HTCondor jobs, we will need to write a script that unpacks our Python installation and then runs our Python code. We will use this script as as the executable of our HTCondor submit file.
