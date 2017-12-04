@@ -140,38 +140,41 @@ tar -czvf python-2.7.tar.gz python/
 --------------------------------------------------------------------------------------------------------
 ##### Create a submit file
  35. Create and enter the file ```vim blobtools_test.sub``` and paste the following (Press i to edit)
- ```
- universe                = vanilla
- #executable              = blobtools_test.sh
- 
- #output                  = blobtools_test.out
- #log                     = blobtools_test.log
- #error                   = blobtools_test.err
- 
- request_memory          = 10 GB
- request_disk            = 10 GB
- 
- request_cpus            = 1
- 
- transfer_input_files    = python-2.7.tar.gz, blobtools.tar.gz
- should_transfer_files   = YES
- when_to_transfer_output = ON_EXIT
- 
- requirements            = (Targes.HasGuster == true)
- 
- Getenv                  = TRUE
- queue
+```
+universe                = vanilla
+#executable              = blobtools_test.sh
+
+#output                  = blobtools_test.out
+#log                     = blobtools_test.log
+#error                   = blobtools_test.err
+
+request_memory          = 10 GB
+request_disk            = 10 GB
+
+request_cpus            = 1
+
+transfer_input_files    = python-2.7.tar.gz,blobtools-1.5.tar.gz
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+
+#requirements           = (Targes.HasGuster == true)
+
+Getenv                  =TRUE
+queue
+
  ``` 
-  35. Write and quit ```Esc + :wq + Enter```  
+  36. Write and quit ```Esc + :wq + Enter```  
  --------------------------------------------------------------------------------------------------------
  
  ##### Interactively test
- 36. Submit the test ```condor_submit -i blobtools_test.sub```
- 37. Once your job is processed, untar blobtools and python
+ 37. Submit the test ```condor_submit -i blobtools_test.sub```
+ 38. Once your job is processed, untar blobtools and python
 ```
 tar xvzf blobtools-1.5.tar.gz
 tar xvzf python-2.7.tar.gz
 ```
- 38. Export the new path ```export PATH=$(pwd)/python/bin:$PATH```
- 39. Test blobtools functions ```./blobtools -h```
-You are successful if no errors are thrown and no interrupts occur.
+ 39. Export the new path ```export PATH=$(pwd)/python/bin:$PATH```
+ 40. Test blobtools functions ```./blobtools -h```
+ 
+You are successful if no errors are thrown and no interrupts occur. 
+ 41. Exit interactive mode ```exit```
