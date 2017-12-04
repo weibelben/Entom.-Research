@@ -130,6 +130,33 @@ samtools_tar=$DIR/samtools-1.5.tar.bz2
  32. Install blobtools ```./install``` 
 --------------------------------------------------------------------------------------------------------
 
+##### Create a submit file
+ 33. Create the file ```blobtools_test.sub```
+ 34. Enter it ```vim blobtools_test.sub``` and paste the following
+ ```
+ universe                = vanilla
+ executable              = blobtools_test.sh
+ 
+ output                  = blobtools_test.out
+ log                     = blobtools_test.log
+ error                   = blobtools_test.err
+ 
+ request_memory          = 10 GB
+ request_disc            = 10 GB
+ 
+ request_cpus            = 1
+ 
+ transfer_input_files    = python-2.7.tar.gz, samtools-1.5.tar.gz
+ should_transfer_files   = YES
+ when_to_transfer_files  = ON_EXIT
+ 
+ requirements            = (Targes.HasGuster == true)
+ 
+ Getenv                  = TRUE
+ queue
+ ```
+
+
 ##### Create a tarball of the python installation 
  33. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
  34. Exit the Interactive job and return to the submit server: ```exit```
