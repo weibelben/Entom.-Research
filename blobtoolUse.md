@@ -103,23 +103,31 @@ wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar
 ```
  18. Untar it ```tar -xvf samtools-1.5.tar.bz2```
  19. Enter the install directory ```cd samtools-1.5```
- 20. Reset the path ```export PATH=$(pwd)/../samtools:$PATH``` 
- 21. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
+ 20. Configure with ```./configure --disable-lzma --prefix=$(pwd)/../samtools```
  
 Caution: CRAM format may use LZMA2 compression, which was discluded from this configuration. 
 
- 22. Make and install samtools.
+ 21. Make and install samtools.
 ```
 make
 make install
 ```
 
 --------------------------------------------------------------------------------------------------------
- 23. Move up a directory ```cd ..```
- 24. Reset your path to the correct location ```export PATH=$(pwd):$PATH```
+ 22. Move up a directory ```cd ..```
+ 23. Enter the install executable ```vim install```
+ 24. Scroll down to line 127.
+ 25. Comment the lines that download and install samtools, the code should follow: 
+```
+# install samtools
+samtools_tar=$DIR/samtools-1.5.tar.bz2
+#if [ ! -f "$samtools_tar" ]; then
+#    download_samtools
+#fi
+#install_samtools
+```
+ 26. Write and quit to return to your blobtools directory ```Esc + wq + Enter```
  25. Install blobtools ```./install``` 
- 
- ERROR OCCURS ON THE STEP ABOVE ^
 --------------------------------------------------------------------------------------------------------
 
 ##### Create a tarball of the python installation 
@@ -146,32 +154,3 @@ python my_script.py
 Finally, give your script executable permissions by running: ```chmod +x run_python.sh```
 
 -----------------------------------------------------------------------------------------------------------------------
-
-### ERROR:
-```
-[bweibel@submit-3 blobtools]$ ./install
-[+] Checking dependencies...
-    [+] [wget] /usr/bin/wget
-    [+] [tar] /bin/tar
-    [+] [pip] pip
-    [+] [python2.7] /home/bweibel/python/bin/python
-[+] Installing python dependencies...
-running install
-
-      .
-      .
-      .
-      
-Successfully installed ujson-1.35
-[+] Python dependencies installed.
-[+] Creating BlobTools executable...done.
-[+] Unpacking samtools-1.5...done.
-[+] Configuring samtools-1.5...FAIL.
-[X] - Could not configure samtools-1.5. Please install samtools-1.5 in /home/bweibel/blobtools/samtools/ (see http://www.htslib.org/download/)
-
-```
-
-Possible fix
-```
- ln -s /usr/python/bin/python $(pwd)/../../python/bin
-```
