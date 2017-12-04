@@ -128,11 +128,18 @@ samtools_tar=$DIR/samtools-1.5.tar.bz2
 ```
  31. Write and quit to return to your blobtools directory ```Esc + wq + Enter```
  32. Install blobtools ```./install``` 
---------------------------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------------------------
+##### Tar samtools and python
+ 33. Return to your working directory ```cd ..```
+ 34. Run the following command to create your own tarball of the installations:
+```
+tar -czvf samtools-1.5.tar.gz blobtools/samtools/
+tar -czvf python-2.7.tar.gz python/
+```
 
+--------------------------------------------------------------------------------------------------------
 ##### Create a submit file
- 33. Create the file ```blobtools_test.sub```
- 34. Enter it ```vim blobtools_test.sub``` and paste the following
+ 35. Create and enter the file ```vim blobtools_test.sub``` and paste the following (Press i to edit)
  ```
  universe                = vanilla
  executable              = blobtools_test.sh
@@ -154,30 +161,6 @@ samtools_tar=$DIR/samtools-1.5.tar.bz2
  
  Getenv                  = TRUE
  queue
- ```
-
-
-##### Create a tarball of the python installation 
- 33. Run the following command to create your own tarball of the installation: ```tar -czvf python.tar.gz python/```
- 34. Exit the Interactive job and return to the submit server: ```exit```
- --------------------------------------------------------------------------------------------------------
-##### Sample script:
-We now have a python.tar.gz file that contains our entire Python installation. In order to use this installation in our HTCondor jobs, we will need to write a script that unpacks our Python installation and then runs our Python code. We will use this script as as the executable of our HTCondor submit file.
-
-A sample script appears below. After the first line, the lines starting with hash marks are comments . You should replace "myscript.py" with the name of the script you would like to run.
-```
-#!/bin/bash  
-
-# untar your Python installation
-tar -xzf python.tar.gz
-# make sure the script will use your Python installation, 
-# and the working directory as it's home location
-export PATH=$(pwd)/python/bin:$PATH
-mkdir home
-export HOME=$(pwd)/home
-# run your script
-python my_script.py
-```
-Finally, give your script executable permissions by running: ```chmod +x run_python.sh```
-
------------------------------------------------------------------------------------------------------------------------
+ ``` 
+  35. Write and quit ```Esc + wq + Enter```
+  --------------------------------------------------------------------------------------------------------
