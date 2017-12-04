@@ -27,9 +27,8 @@ Updated 11/22/2017
 --------------------------------------------------------------------------------------------------------
 ##### Ensure Proper Installation
  7. Move up a directory ```cd ..``` 
- 8. Check contents of python directory, should look accordingly
+ 8. Check contents of python directory, should look accordingly ```ls python```
 ```
-[alice@build]$ ls python 
 bin  include  lib  share
 ```
  9. Ensure you have a python executable ```ls python/bin```,
@@ -169,4 +168,9 @@ Successfully installed ujson-1.35
 [+] Configuring samtools-1.5...FAIL.
 [X] - Could not configure samtools-1.5. Please install samtools-1.5 in /home/bweibel/blobtools/samtools/ (see http://www.htslib.org/download/)
 
+```
+
+Possible fix
+```
+ ln -s /usr/python/bin/python $(pwd)/../../python/bin
 ```
