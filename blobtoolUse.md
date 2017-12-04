@@ -126,14 +126,14 @@ samtools_tar=$DIR/samtools-1.5.tar.bz2
 #fi
 #install_samtools
 ```
- 31. Write and quit to return to your blobtools directory ```Esc + wq + Enter```
+ 31. Write and quit to return to your blobtools directory ```Esc + :wq + Enter```
  32. Install blobtools ```./install``` 
  --------------------------------------------------------------------------------------------------------
-##### Tar samtools and python
+##### Tar blobtools and python
  33. Return to your working directory ```cd ..```
  34. Run the following command to create your own tarball of the installations:
 ```
-tar -czvf samtools-1.5.tar.gz blobtools/samtools/
+tar -czvf blobtools.tar.gz blobtools/
 tar -czvf python-2.7.tar.gz python/
 ```
 
@@ -142,25 +142,36 @@ tar -czvf python-2.7.tar.gz python/
  35. Create and enter the file ```vim blobtools_test.sub``` and paste the following (Press i to edit)
  ```
  universe                = vanilla
- executable              = blobtools_test.sh
+ #executable              = blobtools_test.sh
  
- output                  = blobtools_test.out
- log                     = blobtools_test.log
- error                   = blobtools_test.err
+ #output                  = blobtools_test.out
+ #log                     = blobtools_test.log
+ #error                   = blobtools_test.err
  
  request_memory          = 10 GB
- request_disc            = 10 GB
+ request_disk            = 10 GB
  
  request_cpus            = 1
  
- transfer_input_files    = python-2.7.tar.gz, samtools-1.5.tar.gz
+ transfer_input_files    = python-2.7.tar.gz, blobtools.tar.gz
  should_transfer_files   = YES
- when_to_transfer_files  = ON_EXIT
+ when_to_transfer_output = ON_EXIT
  
  requirements            = (Targes.HasGuster == true)
  
  Getenv                  = TRUE
  queue
  ``` 
-  35. Write and quit ```Esc + wq + Enter```
-  --------------------------------------------------------------------------------------------------------
+  35. Write and quit ```Esc + :wq + Enter```  
+ --------------------------------------------------------------------------------------------------------
+ 
+ ##### Interactively test
+ 36. Submit the test ```condor_submit -i blobtools_test.sub```
+ 37. Once your job is processed, untar blobtools and python
+```
+tar xvzf blobtools-1.5.tar.gz
+tar xvzf python-2.7.tar.gz
+```
+ 38. Export the new path ```export PATH=$(pwd)/python/bin:$PATH```
+ 39. Test blobtools functions ```./blobtools -h```
+You are successful if no errors are thrown and no interrupts occur.
