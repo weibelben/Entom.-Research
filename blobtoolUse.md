@@ -177,4 +177,5 @@ tar xvzf python-2.7.tar.gz
  40. Test blobtools functions ```./blobtools -h```
  
 You are successful if no errors are thrown and no interrupts occur. 
+
  41. Exit interactive mode ```exit```
