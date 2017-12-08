@@ -164,7 +164,7 @@ queue
 
  ``` 
   36. Write and quit ```Esc + :wq + Enter```  
- --------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
  
  ##### Interactively test
  37. Submit the test ```condor_submit -i blobtools_test.sub```
@@ -179,3 +179,38 @@ tar xvzf python-2.7.tar.gz
 You are successful if no errors are thrown and no interrupts occur. 
 
  41. Exit interactive mode ```exit```
+ 
+--------------------------------------------------------------------------------------------------------
+##### After testing, use blotools accordingly:
+```
+usage: blobtools [<command>] [<args>...] [--help] [--version]
+
+commands:
+
+    create        create a BlobDB
+    view          generate tabular view, CONCOCT input or COV files from BlobDB
+    plot          generate a BlobPlot from a BlobDB
+    covplot       generate a CovPlot from a BlobDB and a COV file
+
+    map2cov       generate a COV file from BAM file
+    taxify        generate a BlobTools compatible HITS file (TSV)
+    bamfilter     subset paired-end reads from a BAM file
+    seqfilter     subset sequences in FASTA file based sequence IDs in list
+    nodesdb       create nodesdb based on NCBI Taxdump's names.dmp and nodes.dmp
+
+    -h, --help      show this
+    -v, --version   show version number
+
+See 'blobtools <command> --help' for more information on a specific command.
+
+examples:
+
+    # 1. Create a BlobDB
+    ./blobtools create -i example/assembly.fna -b example/mapping_1.bam -t example/blast.out -o example/test
+
+    # 2. Generate a tabular view
+    ./blobtools view -i example/test.blobDB.json
+
+    # 3. Generate a blobplot
+    ./blobtools blobplot -i example/test.blobDB.json
+```
