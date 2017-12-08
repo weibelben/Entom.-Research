@@ -142,9 +142,9 @@ tar -czvf python-2.7.tar.gz python/
  35. Create and enter the file ```vim blobtools_test.sub``` and paste the following (Press i to edit)
 ```
 universe                = vanilla
-#executable              = blobtools_test.sh
+executable              = blobtools_script.sh
 
-#output                  = blobtools_test.out
+output                  = test_output.txt
 #log                     = blobtools_test.log
 #error                   = blobtools_test.err
 
@@ -153,7 +153,7 @@ request_disk            = 10 GB
 
 request_cpus            = 1
 
-transfer_input_files    = python-2.7.tar.gz,blobtools-1.5.tar.gz
+transfer_input_files    = python-2.7.tar.gz, blobtools-1.5.tar.gz
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT
 
@@ -161,8 +161,7 @@ when_to_transfer_output = ON_EXIT
 
 Getenv                  =TRUE
 queue
-
- ``` 
+``` 
   36. Write and quit ```Esc + :wq + Enter```  
 --------------------------------------------------------------------------------------------------------
  
@@ -229,3 +228,92 @@ wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.3.1/bowtie2-2
 cd ..
 tar -czvf bowtie.tar.gz bowtie2/
 ```
+
+--------------------------------------------------------------------------------------------------------
+ ##### Create a submit file and Interactively test
+  47. Create and enter the file ```vim bowtie_test.sub``` and paste the following (Press i to edit)
+```
+universe                = vanilla
+
+output                  = test_output.txt
+
+request_memory          = 10 GB
+request_disk            = 10 GB
+
+request_cpus            = 1
+
+transfer_input_files    = bowtie.tar.gz
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+
+Getenv                  = TRUE
+queue
+ ``` 
+ 48. Write and quit ```Esc + :wq + Enter```  
+ 49. Submit the test ```condor_submit -i bowtie_test.sub```
+ 50. Once your job is processed, untar bowtie
+```
+tar xvzf bowtie.tar.gz
+```
+ 51. Export the new path ```export PATH=$(pwd)bowtie/bowtie2-2.33.1-linux-x86_64:$PATH```
+ 52. Print helpful options:
+```
+cd bowtie/bowtie2-2.33.1-linux-x86_64
+./bowtie2 -h
+``` 
+You are successful if no errors are thrown, no interrupts occur, and the help message is displayed. 
+
+ 53. Exit interactive mode ```exit```
+--------------------------------------------------------------------------------------------------------
+##### Test with a submission script
+ 54. Create a test submission ```vim test.sub``` and paste in it the following
+```
+universe                = vanilla
+executable              = test_script.sh
+
+output                  = test_output.txt
+#log                     = blobtools_test.log
+#error                   = blobtools_test.err
+
+request_memory          = 10 GB
+request_disk            = 10 GB
+
+request_cpus            = 1
+
+transfer_input_files    = python-2.7.tar.gz, blobtools-1.5.tar.gz, bowtie.tar.gz
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+
+#requirements           = (Targes.HasGuster == true)
+
+Getenv                  =TRUE
+queue
+```
+ 55. Create a script for execution by the submission ```vim test_script.sh``` and paste in it
+```
+#!/bin/bash
+
+# untar the 2
+tar xvzf blobtools-1.5.tar.gz
+tar xvzf python-2.7.tar.gz
+tar xvzf bowtie.tar.gz
+
+# test blobtools and python
+export PATH=$(pwd)/python/bin:$PATH
+cd blobtools
+./blobtools -h
+
+# test bowtie
+export PATH=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64:$PATH
+
+cp test_output.txt /home/bweibel
+```
+ 56. Submit the test ```condor_submit test.sub```
+ 57. When the job is completed, open the output file ```vim test_output.txt```
+You are successfull if not errors or interrupts occur and the file contains hundreds of lines similar to
+```blobtools/samtools-1.5/misc/wgsim.o``` for the blobtools tests, 
+```python/lib/python2.7/lib-tk/turtle.py``` for the python tests and fifty or so similar to
+```bowtie/bowtie2-2.3.3.1-linux-x86_64/scripts/``` for the bowtie tests.
+
+
+
