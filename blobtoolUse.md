@@ -214,3 +214,18 @@ examples:
     # 3. Generate a blobplot
     ./blobtools blobplot -i example/test.blobDB.json
 ```
+
+--------------------------------------------------------------------------------------------------------
+##### Retrieving bowtie
+ 42. Make a bowtie directory ```mkdir bowtie```
+ 43. Enter the new directory ```cd bowtie```
+ 44. Retrieve bowtie2-2.3.3.1 
+```
+wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.3.1/bowtie2-2.3.3.1-linux-x86_64.zip/download
+```
+ 45. Unzip the installation ```unzip download```
+ 46. Return to your working directory and tar bowtie
+```
+cd ..
+tar -czvf bowtie.tar.gz bowtie2/
+```
