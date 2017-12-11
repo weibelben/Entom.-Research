@@ -234,7 +234,7 @@ You are successful if no errors are thrown, no interrupts occur, and the help me
  54. Create a test submission ```vim test_bowtie.sub``` and paste in it the following
 ```
 universe                = vanilla
-executable              = test_script.sh
+executable              = test_bowtie.sh
 
 output                  = test_bowtie_output.txt
 
