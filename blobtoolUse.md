@@ -313,7 +313,7 @@ cp test_bowtie_output.txt /home/user # CHANGE TO YOUR HOME DIR
  60. When the job is completed, open the output file ```vim test_output.txt```
 You are successfull if not errors or interrupts occur and the file contains lines similar to
 ```bowtie/bowtie2-2.3.3.1-linux-x86_64/scripts/``` for the bowtie tests.
- 61. Untar the temp file ```tar xvzf bowtie.tar.gz```
+ 61. Untar the temp file ```tar xvzf test_bowtie_temp.tar.gz``` and use to your pleasure.
 
 --------------------------------------------------------------------------------------------------------
  61. After testing, find proper command options for the installed programs using
