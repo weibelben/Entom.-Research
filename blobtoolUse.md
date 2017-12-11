@@ -220,18 +220,44 @@ queue
 ```
 tar xvzf bowtie.tar.gz
 ```
- 51. Export the new path ```export PATH=$(pwd)bowtie/bowtie2-2.33.1-linux-x86_64:$PATH```
- 52. Print helpful options:
+ 51. Export the new path ```export BT2_HOME=$(pwd)/../bowtie2-2.3.3.1-linux-x86_64```
+ 52. Create a temporary directory in bowtie and enter it:
 ```
-cd bowtie/bowtie2-2.33.1-linux-x86_64
-./bowtie2 -h
+cd bowtie
+mkdir temp
+cd temp
 ``` 
-You are successful if no errors are thrown, no interrupts occur, and the help message is displayed. 
-
- 53. Exit interactive mode ```exit```
+ 53. Run the following test commands
+```
+$BT2_HOME/bowtie2-build $BT2_HOME/example/reference/lambda_virus.fa lambda_virus
+$BT2_HOME/bowtie2 -x lambda_virus -U $BT2_HOME/example/reads/reads_1.fq -S eg1.sam
+```
+You are successful if no errors are thrown, no interrupts occur, and the following is displayed.
+```
+10000 reads; of these:
+  10000 (100.00%) were unpaired; of these:
+    596 (5.96%) aligned 0 times
+    9404 (94.04%) aligned exactly 1 time
+    0 (0.00%) aligned >1 times
+94.04% overall alignment rate
+```
+ 54. To align paired-end reads included with Bowtie 2, stay in the same directory and run
+```
+$BT2_HOME/bowtie2 -x lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+```
+ 55. To use local alignment to align some longer reads included with Bowtie 2, stay in the same directory and run
+```
+$BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
+```
+ 56. Run the paired-end example 
+```
+$BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+```
+This all went succesfully if there are no errors or interrupts. Fianl output looks similar to the output of (53)
+ 57. Exit interactive mode ```exit```
 --------------------------------------------------------------------------------------------------------
 ##### Test bowtie with a submission script
- 54. Create a test submission ```vim test_bowtie.sub``` and paste in it the following
+ 58. Create a test submission ```vim test_bowtie.sub``` and paste in it the following
 ```
 universe                = vanilla
 executable              = test_bowtie.sh
@@ -260,17 +286,29 @@ queue
 tar xvzf bowtie.tar.gz
 
 # test bowtie
-export PATH=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64:$PATH
+export BT2_HOME=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_6
 
-cp test_output.txt /home/user
+cd bowtie
+mkdir temp
+cd temp
+
+$BT2_HOME/bowtie2 -x lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+$BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
+$BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
+$BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+
+#tar temp
+tar -czvf test_bowtie_temp.tar.gz temp/
+cp test_bowtie_temp.tar.gz /home/user # CHANGE TO YOUR HOME DIR
+cp test_bowtie_output.txt /home/user # CHANGE TO YOUR HOME DIR
 ```
- 56. Submit the test ```condor_submit test_bowtie.sub```
- 57. When the job is completed, open the output file ```vim test_output.txt```
+ 59. Submit the test ```condor_submit test_bowtie.sub```
+ 60. When the job is completed, open the output file ```vim test_output.txt```
 You are successfull if not errors or interrupts occur and the file contains lines similar to
 ```bowtie/bowtie2-2.3.3.1-linux-x86_64/scripts/``` for the bowtie tests.
 
 --------------------------------------------------------------------------------------------------------
- 58. After testing, find proper command options for the installed programs using
+ 61. After testing, find proper command options for the installed programs using
 ```
 ./python -h
 ./bowtie2 -h
