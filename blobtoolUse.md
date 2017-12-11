@@ -262,7 +262,7 @@ tar xvzf bowtie.tar.gz
 # test bowtie
 export PATH=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64:$PATH
 
-cp test_output.txt /home/bweibel
+cp test_output.txt /home/user
 ```
  56. Submit the test ```condor_submit test_bowtie.sub```
  57. When the job is completed, open the output file ```vim test_output.txt```
