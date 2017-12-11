@@ -253,7 +253,9 @@ $BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.f
 ```
 $BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
 ```
+
 This all went succesfully if there are no errors or interrupts. Fianl output looks similar to the output of (53)
+
  57. Exit interactive mode ```exit```
 --------------------------------------------------------------------------------------------------------
 ##### Test bowtie with a submission script
