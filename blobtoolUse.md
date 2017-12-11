@@ -301,9 +301,11 @@ $BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.f
 $BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
 $BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
 
+echo 'now tarring temp directory'
+
 #tar temp
-cd ../..
-tar -czvf test_bowtie_temp.tar.gz bowtie/temp/
+cd ..
+tar -czvf test_bowtie_temp.tar.gz temp/
 cp test_bowtie_temp.tar.gz /home/user # CHANGE TO YOUR HOME DIR
 cp test_bowtie_output.txt /home/user # CHANGE TO YOUR HOME DIR
 ```
