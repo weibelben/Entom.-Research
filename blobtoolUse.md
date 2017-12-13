@@ -220,7 +220,7 @@ queue
 ```
 tar xvzf bowtie.tar.gz
 ```
- 51. Export the new path ```export BT2_HOME=$(pwd)/../bowtie2-2.3.3.1-linux-x86_64```
+ 51. Export the new path ```export BT2_HOME=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64```
  52. Create a temporary directory in bowtie and enter it:
 ```
 cd bowtie
@@ -296,8 +296,9 @@ cd temp
 
 echo 'inside temp'
 
+$BT2_HOME/bowtie2-build $BT2_HOME/example/reference/lambda_virus.fa lambda_virus
+$BT2_HOME/bowtie2 -x lambda_virus -U $BT2_HOME/example/reads/reads_1.fq -S eg1.sam
 $BT2_HOME/bowtie2 -x lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
-$BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
 $BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
 $BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
 
