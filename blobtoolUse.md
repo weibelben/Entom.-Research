@@ -326,3 +326,99 @@ You are successfull if not errors or interrupts occur and the file contains line
 ./bowtie2 -h
 ```
 in their respective directories or bin directories. 
+
+Interactive test(12/13/17):
+```
+tar xvzf bowtie.tar.gz
+tar xvzf blobtools-1.5.tar.gz
+tar xvzf python-2.7.tar.gz
+
+export BT2_HOME=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64
+
+cd bowtie
+mkdir temp
+cd temp
+
+$BT2_HOME/bowtie2-build $BT2_HOME/example/reference/lambda_virus.fa lambda_virus
+$BT2_HOME/bowtie2 -x lambda_virus -U $BT2_HOME/example/reads/reads_1.fq -S eg1.sam
+$BT2_HOME/bowtie2 -x lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+$BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
+$BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+
+export SAMTOOLS=$(pwd)/../../blobtools/samtools/bin
+
+$SAMTOOLS/samtools view -bS eg1.sam > eg1.bam
+$SAMTOOLS/samtools view -bS eg2.sam > eg2.bam
+$SAMTOOLS/samtools view -bS eg3.sam > eg3.bam
+
+$SAMTOOLS/samtools sort eg1.bam -o eg1.sorted.bam
+$SAMTOOLS/samtools sort eg2.bam -o eg2.sorted.bam
+$SAMTOOLS/samtools sort eg3.bam -o eg3.sorted.bam
+
+cd ..
+tar -czvf test_bowtie_temp.tar.gz temp/
+cd ..
+cp bowtie/test_bowtie_temp.tar.gz .
+
+cp test_bowtie_temp.tar.gz /home/user # CHANGE TO YOUR HOME DIR
+cp submit.txt /home/user # CHANGE TO YOUR HOME DIR
+```
+
+##### Resulting .sub and .sh files:
+``` 
+universe                = vanilla
+executable              = submit.sh
+
+output                  = submit.txt
+
+request_memory          = 10 GB
+request_disk            = 10 GB
+
+request_cpus            = 1
+
+transfer_input_files    = bowtie.tar.gz, python-2.7.tar.gz, blobtools-1.5.tar.gz
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+
+#requirements           = (Targes.HasGuster == true)
+
+Getenv                  = TRUE
+queue
+```
+```
+#!/bin/bash
+
+tar xvzf bowtie.tar.gz
+tar xvzf blobtools-1.5.tar.gz
+tar xvzf python-2.7.tar.gz
+
+export BT2_HOME=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64
+
+cd bowtie
+mkdir temp
+cd temp
+
+$BT2_HOME/bowtie2-build $BT2_HOME/example/reference/lambda_virus.fa lambda_virus
+$BT2_HOME/bowtie2 -x lambda_virus -U $BT2_HOME/example/reads/reads_1.fq -S eg1.sam
+$BT2_HOME/bowtie2 -x lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+$BT2_HOME/bowtie2 --local -x lambda_virus -U $BT2_HOME/example/reads/longreads.fq -S eg3.sam
+$BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/reads/reads_1.fq -2 $BT2_HOME/example/reads/reads_2.fq -S eg2.sam
+
+export SAMTOOLS=$(pwd)/../../blobtools/samtools/bin
+
+$SAMTOOLS/samtools view -bS eg1.sam > eg1.bam
+$SAMTOOLS/samtools view -bS eg2.sam > eg2.bam
+$SAMTOOLS/samtools view -bS eg3.sam > eg3.bam
+
+$SAMTOOLS/samtools sort eg1.bam -o eg1.sorted.bam
+$SAMTOOLS/samtools sort eg2.bam -o eg2.sorted.bam
+$SAMTOOLS/samtools sort eg3.bam -o eg3.sorted.bam
+
+cd ..
+tar -czvf test_bowtie_temp.tar.gz temp/
+cd ..
+cp bowtie/test_bowtie_temp.tar.gz .
+
+cp submit.txt /home/bweibel
+cp test_bowtie_temp.tar.gz /home/bweibel
+```
