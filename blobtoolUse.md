@@ -288,7 +288,7 @@ queue
 tar xvzf bowtie.tar.gz
 
 # test bowtie
-export BT2_HOME=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_6
+export BT2_HOME=$(pwd)/bowtie/bowtie2-2.3.3.1-linux-x86_64
 
 cd bowtie
 mkdir temp
