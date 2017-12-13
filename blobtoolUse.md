@@ -305,8 +305,11 @@ $BT2_HOME/bowtie2 -x $BT2_HOME/example/index/lambda_virus -1 $BT2_HOME/example/r
 echo 'now tarring temp directory'
 
 #tar temp
-cd ../..
-tar -czvf test_bowtie_temp.tar.gz bowtie/temp/
+cd ..
+tar -czvf test_bowtie_temp.tar.gz temp/
+cd ..
+cp bowtie/test_bowtie_temp.tar.gz .
+
 cp test_bowtie_temp.tar.gz /home/user # CHANGE TO YOUR HOME DIR
 cp test_bowtie_output.txt /home/user # CHANGE TO YOUR HOME DIR
 ```
