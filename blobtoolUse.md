@@ -127,7 +127,13 @@ samtools_tar=$DIR/samtools-1.5.tar.bz2
 #install_samtools
 ```
  31. Write and quit to return to your blobtools directory ```Esc + :wq + Enter```
- 32. Install blobtools ```./install``` 
+ 32. Install blobtools and download taxdump in its data file
+ ```
+ ./install
+ cd data
+ wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz
+ tar xvzf taxdump.tar.gz
+ ``` 
  --------------------------------------------------------------------------------------------------------
 ##### Tar blobtools and python
  33. Return to your working directory ```cd ..```
