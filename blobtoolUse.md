@@ -286,7 +286,7 @@ when_to_transfer_output = ON_EXIT
 Getenv                  = TRUE
 queue
 ```
- 55. Create a script for execution by the submission ```vim test_bowtie.sh``` and paste in it
+ 59. Create a script for execution by the submission ```vim test_bowtie.sh``` and paste in it
 ```
 #!/bin/bash
 
@@ -319,14 +319,14 @@ cp bowtie/test_bowtie_temp.tar.gz .
 cp test_bowtie_temp.tar.gz /home/user # CHANGE TO YOUR HOME DIR
 cp test_bowtie_output.txt /home/user # CHANGE TO YOUR HOME DIR
 ```
- 59. Submit the test ```condor_submit test_bowtie.sub```
- 60. When the job is completed, open the output file ```vim test_output.txt```
+ 60. Submit the test ```condor_submit test_bowtie.sub```
+ 61. When the job is completed, open the output file ```vim test_output.txt```
 You are successfull if not errors or interrupts occur and the file contains lines similar to
 ```bowtie/bowtie2-2.3.3.1-linux-x86_64/scripts/``` for the bowtie tests.
- 61. Untar the temp file ```tar xvzf test_bowtie_temp.tar.gz``` and use to your pleasure.
+ 62. Untar the temp file ```tar xvzf test_bowtie_temp.tar.gz``` and use to your pleasure.
 
 --------------------------------------------------------------------------------------------------------
- 61. After testing, find proper command options for the installed programs using
+ 63. After testing, find proper command options for the installed programs using
 ```
 ./python -h
 ./bowtie2 -h
