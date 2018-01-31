@@ -1,0 +1,1 @@
+EXPLAIN how concatQuery works.
