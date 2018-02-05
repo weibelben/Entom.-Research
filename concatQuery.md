@@ -19,11 +19,12 @@ NOTE the placement of parenthases, pluses, minuses, colons, and numbers as synta
     - the second line is in a format like the following:
 ```
 AGATCAACGGAGTTACCGTGTATGCTGCTACTGTGATAGGTTACCTGGTGTATTCTTTGGCCCAGGTATTCCATTTCTGCATTTTTGGGAACAGGCTGATAGAGGAGAGTTCATCTGTTATGGAAGCAGCTTACAGCTGTCACTGGTATGATGGTTCAGAGGAAGCGAAAACATTCGTCCAGATTGTATGTCAACAATGTCAAAAAGCCTTGTCGATATCTGGGGCGAAGTTTTTCACTATTTCTCTAGATCTTTTTGCCTCGGTACTTGGTGCAGTAGTTACATATTTCATGGTACTGGTACAACTCAAATAA  
-````
+```
+The length of the query is stated by the second set of parenthases, 1440 - 1127 = the length of the example query.
 
-    The length of the query is stated by the second set of parenthases, 1440 - 1127 = the length of the example query.
-    
   2. concatQuery then creates a new file of your chosing: <output_file> 
   The output file will contain a header line and a respective read line for each read constructed from the quaries it contains.
   Each header line contains a list of all of the scaffold indices which it read to construct the read, the name of the read, and the percent of the read that matched. percent = read length - sum(quary lengths)
+  
+  3. The read contains all of the quarries concatenated with 'N' in place of all of the indices where there was no match.
   
