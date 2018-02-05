@@ -1,7 +1,11 @@
 COMPILATION:
-``gcc -Wall -m32 -std=gnu99 concatQuery.c -o concatQuery``
+``
+gcc -Wall -m32 -std=gnu99 concatQuery.c -o concatQuery
+``
 USAGE:
-``./concatQuery <input_file> <output_file>``
+``
+./concatQuery <input_file> <output_file>
+``
 
 concatQuery is a program written in the C languge to concatenate queries into legible reads. 
 There are __ parts to this program:
