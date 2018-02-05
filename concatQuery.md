@@ -28,3 +28,5 @@ The length of the query is stated by the second set of parenthases, 1440 - 1127 
   
   3. The read contains all of the quarries concatenated with 'N' in place of all of the indices where there was no match.
   
+  Additional information can be found in comments within the program itself.
+  
