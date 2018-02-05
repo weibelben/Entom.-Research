@@ -1,3 +1,8 @@
+COMPILATION:
+``gcc -Wall -m32 -std=gnu99 concatQuery.c -o concatQuery``
+USAGE:
+``./concatQuery <input_file> <output_file>``
+
 concatQuery is a program written in the C languge to concatenate queries into legible reads. 
 There are __ parts to this program:
   1. It reads the header and respective query of each linting in a .fasta file (2 lines per query)
@@ -12,3 +17,6 @@ AGATCAACGGAGTTACCGTGTATGCTGCTACTGTGATAGGTTACCTGGTGTATTCTTTGGCCCAGGTATTCCATTTCTGC
 ```
     The length of the query is stated by the second set of parenthases, 1440 - 1127 = the length of the example query.
     
+  2. concatQuery then creates a new file of your chosing: <output_file> 
+  The output file will contain a header line and a respective read line for each read constructed from the quaries it contains.
+  
