@@ -1,1 +1,1 @@
-# Entom.-Research
+# Entomology Research
