@@ -8,6 +8,8 @@ USAGE:
 ./concatQuery <input_file> <output_file>
 ``
 
+NOTE: ONLY RUN USING -m32 as in 32 bit processing.
+
 concatQuery is a program written in the C languge to concatenate queries into legible reads. 
 There are 3 parts to this program:
   1. It reads the header and respective query of each linting in a .fasta file (2 lines per query)
